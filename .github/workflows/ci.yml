@@ -32,14 +32,25 @@ jobs:
             - name: Build
                 run: bun run build
 
-            - name: Regenerate GIF
-                continue-on-error: true
+            - name: Setup Python
+                uses: actions/setup-python@v5
+                with:
+                    python-version: '3.11'
+
+            - name: Install Pillow
+                run: pip install Pillow
+
+            - name: Regenerate GIF and verify
                 run: |
-                    python3 -m pip install --user Pillow
                     python3 docs/create-gif.py
                     if ! git diff --exit-code docs/context-problem-demo.gif; then
-                        echo "⚠️ GIF was regenerated and differs from committed version"
-                        echo "Consider committing the updated GIF"
+                        echo "❌ GIF is out of date! Please regenerate and commit:"
+                        echo "   python3 docs/create-gif.py"
+                        echo "   git add docs/context-problem-demo.gif"
+                        echo "   git commit -m 'Update GIF'"
+                        exit 1
+                    else
+                        echo "✅ GIF is up to date"
                     fi
 
     test-coverage:
