@@ -30,7 +30,7 @@
     "test:integration": "bun test integration.test.ts",
     "test:all": "bun test && bun test integration.test.ts",
     "benchmark": "tsx benchmarks/run-benchmarks.ts",
-    "lint": "eslint . --ext .ts --max-warnings 10",
+            "lint": "eslint . --ext .ts --max-warnings 10 --ignore-pattern 'benchmarks/**'",
     "lint:fix": "eslint . --ext .ts --fix --max-warnings 10",
         "format": "prettier --write \"**/*.{ts,json,md}\"",
         "format:check": "prettier --check \"**/*.{ts,json,md}\"",
