@@ -20,8 +20,8 @@
    - `terminalizer record demo` (then convert to GIF)
 3. Save as `context-problem-demo.gif`
 
-### Option 3: Use Puppeteer Script
+### Option 3: Use Python Script (Recommended for regeneration)
 
-1. Install dependencies: `npm install puppeteer`
-2. Run: `node docs/create-gif.js`
-3. This creates a screenshot that can be converted to GIF
+1. Install Pillow: `pip3 install Pillow`
+2. Run: `python3 docs/create-gif.py`
+3. This creates the GIF directly: `docs/context-problem-demo.gif`
