@@ -28,11 +28,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Copy HTML files
+      - name: Copy HTML files and assets
         run: |
           mkdir -p _site/docs
           cp docs/create-gif.html _site/docs/create-gif.html
           cp docs/context-problem-demo.gif _site/docs/context-problem-demo.gif || true
+          # Create index redirect
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=docs/create-gif.html"></head><body>Redirecting to <a href="docs/create-gif.html">interactive demo</a>...</body></html>' > _site/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

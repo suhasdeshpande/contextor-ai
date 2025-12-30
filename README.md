@@ -10,7 +10,7 @@ Long-running agents (30-50+ steps) face a critical challenge: **context window l
 
 *Visualization: Without context management, tokens grow unbounded and the agent fails. With context management, strategies keep tokens controlled and the agent succeeds.*
 
-**See it live:** [View interactive animation](https://contextor-ai.github.io/contextor/docs/create-gif.html) or open [`docs/create-gif.html`](./docs/create-gif.html) locally.
+**See it live:** [View interactive animation](https://suhasdeshpande.github.io/-contextor-ai-core/docs/create-gif.html) or open [`docs/create-gif.html`](./docs/create-gif.html) locally.
 
 - ❌ **Token limit exceeded** - Requests fail when context exceeds model limits
 - ❌ **Performance degradation** - Larger contexts = slower inference and higher costs
