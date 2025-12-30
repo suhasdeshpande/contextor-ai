@@ -30,7 +30,17 @@ jobs:
               run: bun run test
 
             - name: Build
-              run: bun run build
+                run: bun run build
+
+            - name: Regenerate GIF
+                continue-on-error: true
+                run: |
+                    python3 -m pip install --user Pillow
+                    python3 docs/create-gif.py
+                    if ! git diff --exit-code docs/context-problem-demo.gif; then
+                        echo "⚠️ GIF was regenerated and differs from committed version"
+                        echo "Consider committing the updated GIF"
+                    fi
 
     test-coverage:
         runs-on: ubuntu-latest

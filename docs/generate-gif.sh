@@ -1,0 +1,21 @@
+#!/bin/bash
+# Generate GIF from HTML animation using screen recording
+
+echo "📹 To create the GIF:"
+echo ""
+echo "1. Open docs/create-gif.html in Chrome/Firefox"
+echo "2. Wait for animation to complete (~15 seconds)"
+echo "3. Use macOS screen recording:"
+echo "   - Press Cmd+Shift+5"
+echo "   - Select 'Record Selected Portion'"
+echo "   - Select the browser window"
+echo "   - Click Record"
+echo "   - Wait for animation"
+echo "   - Stop recording"
+echo ""
+echo "4. Convert MOV to GIF:"
+echo "   - Use: https://ezgif.com/video-to-gif"
+echo "   - Or install ffmpeg: brew install ffmpeg"
+echo "   - Then: ffmpeg -i Screen\\ Recording.mov -vf \"fps=10,scale=1200:-1\" context-problem-demo.gif"
+echo ""
+echo "5. Move GIF to docs/context-problem-demo.gif"

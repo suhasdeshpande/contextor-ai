@@ -10,7 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
             background: #1e1e1e;
@@ -18,19 +18,19 @@
             padding: 40px;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 900px;
             margin: 0 auto;
         }
-        
+
         h1 {
             color: #4ec9b0;
             margin-bottom: 30px;
             text-align: center;
             font-size: 24px;
         }
-        
+
         .section {
             margin-bottom: 40px;
             background: #252526;
@@ -38,71 +38,71 @@
             border-radius: 8px;
             border-left: 4px solid #f48771;
         }
-        
+
         .section.success {
             border-left-color: #4ec9b0;
         }
-        
+
         .section-title {
             font-size: 18px;
             margin-bottom: 15px;
             font-weight: bold;
         }
-        
+
         .section.failure .section-title {
             color: #f48771;
         }
-        
+
         .section.success .section-title {
             color: #4ec9b0;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
-        
+
         th, td {
             padding: 8px 12px;
             text-align: left;
             border-bottom: 1px solid #3e3e42;
         }
-        
+
         th {
             background: #2d2d30;
             color: #cccccc;
             font-weight: bold;
         }
-        
+
         .step-row {
             opacity: 0;
             animation: fadeIn 0.3s ease-in forwards;
         }
-        
+
         @keyframes fadeIn {
             to {
                 opacity: 1;
             }
         }
-        
+
         .status-ok {
             color: #4ec9b0;
         }
-        
+
         .status-warning {
             color: #dcdcaa;
         }
-        
+
         .status-failed {
             color: #f48771;
         }
-        
+
         .strategy {
             color: #569cd6;
             font-weight: bold;
         }
-        
+
         .token-bar {
             height: 20px;
             background: #3e3e42;
@@ -111,45 +111,45 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         .token-fill {
             height: 100%;
             background: linear-gradient(90deg, #4ec9b0, #569cd6);
             transition: width 0.5s ease-out;
             border-radius: 4px;
         }
-        
+
         .token-fill.warning {
             background: linear-gradient(90deg, #dcdcaa, #ce9178);
         }
-        
+
         .token-fill.danger {
             background: linear-gradient(90deg, #f48771, #ce9178);
         }
-        
+
         .summary {
             margin-top: 30px;
             padding: 20px;
             background: #2d2d30;
             border-radius: 8px;
         }
-        
+
         .summary h2 {
             color: #4ec9b0;
             margin-bottom: 15px;
         }
-        
+
         .summary ul {
             list-style: none;
             padding-left: 0;
         }
-        
+
         .summary li {
             padding: 8px 0;
             padding-left: 25px;
             position: relative;
         }
-        
+
         .summary li:before {
             content: "→";
             position: absolute;
@@ -163,7 +163,7 @@
         <h1>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h1>
         <h1>Context Management Problem Visualization</h1>
         <h1>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h1>
-        
+
         <div class="section failure" id="without-cm">
             <div class="section-title">❌ WITHOUT Context Management</div>
             <table>
@@ -178,7 +178,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="section success" id="with-cm">
             <div class="section-title">✅ WITH Context Management</div>
             <table>
@@ -194,7 +194,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="summary">
             <h2>📊 Key Differences</h2>
             <ul>
@@ -210,21 +210,21 @@
             </ul>
         </div>
     </div>
-    
+
     <script>
         function simulateWithoutCM(steps) {
             const tbody = document.getElementById('without-cm-body');
             let tokens = 1000;
-            
+
             for (let i = 1; i <= steps; i++) {
                 setTimeout(() => {
                     tokens += Math.floor(Math.random() * 2000) + 1000;
-                    const status = tokens > 100000 ? 
-                        '<span class="status-failed">❌ FAILED (limit exceeded)</span>' : 
-                        tokens > 80000 ? 
-                        '<span class="status-warning">⚠️ WARNING (approaching limit)</span>' : 
+                    const status = tokens > 100000 ?
+                        '<span class="status-failed">❌ FAILED (limit exceeded)</span>' :
+                        tokens > 80000 ?
+                        '<span class="status-warning">⚠️ WARNING (approaching limit)</span>' :
                         '<span class="status-ok">✅ OK</span>';
-                    
+
                     const row = document.createElement('tr');
                     row.className = 'step-row';
                     row.style.animationDelay = '0s';
@@ -234,7 +234,7 @@
                         <td>${status}</td>
                     `;
                     tbody.appendChild(row);
-                    
+
                     if (tokens > 100000) {
                         const failRow = document.createElement('tr');
                         failRow.innerHTML = `
@@ -247,19 +247,19 @@
                 }, i * 200);
             }
         }
-        
+
         function simulateWithCM(steps) {
             const tbody = document.getElementById('with-cm-body');
             let tokens = 1000;
-            
+
             setTimeout(() => {
                 for (let i = 1; i <= steps; i++) {
                     setTimeout(() => {
                         tokens += Math.floor(Math.random() * 2000) + 1000;
-                        
+
                         let strategy = '';
                         let reduction = 0;
-                        
+
                         if (tokens > 60000 && i >= 5) {
                             reduction = Math.floor(tokens * 0.85);
                             tokens = reduction;
@@ -279,13 +279,13 @@
                         } else {
                             strategy = '-';
                         }
-                        
-                        const status = tokens > 100000 ? 
-                            '<span class="status-failed">❌ FAILED</span>' : 
-                            tokens > 80000 ? 
-                            '<span class="status-warning">⚠️ WARNING</span>' : 
+
+                        const status = tokens > 100000 ?
+                            '<span class="status-failed">❌ FAILED</span>' :
+                            tokens > 80000 ?
+                            '<span class="status-warning">⚠️ WARNING</span>' :
                             '<span class="status-ok">✅ OK</span>';
-                        
+
                         const row = document.createElement('tr');
                         row.className = 'step-row';
                         row.style.animationDelay = '0s';
@@ -296,7 +296,7 @@
                             <td>${status}</td>
                         `;
                         tbody.appendChild(row);
-                        
+
                         if (i === steps) {
                             const successRow = document.createElement('tr');
                             successRow.innerHTML = `
@@ -310,7 +310,7 @@
                 }
             }, 5000);
         }
-        
+
         // Start simulations
         simulateWithoutCM(20);
         simulateWithCM(20);
