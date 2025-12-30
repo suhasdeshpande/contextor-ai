@@ -6,6 +6,12 @@ A production-ready, generic context management orchestrator for long-running AI 
 
 Long-running agents (30-50+ steps) face a critical challenge: **context window limits**. As conversations grow, the LLM's context window fills up, leading to:
 
+![Context Management Problem](./docs/context-problem-demo.gif)
+
+*Visualization: Without context management, tokens grow unbounded and the agent fails. With context management, strategies keep tokens controlled and the agent succeeds.*
+
+**See it live:** Open [`docs/create-gif.html`](./docs/create-gif.html) in your browser to see the animated visualization.
+
 - ❌ **Token limit exceeded** - Requests fail when context exceeds model limits
 - ❌ **Performance degradation** - Larger contexts = slower inference and higher costs
 - ❌ **Lost context** - Important early messages get truncated
