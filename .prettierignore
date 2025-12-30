@@ -1,0 +1,9 @@
+node_modules
+dist
+.turbo
+*.lock
+*.log
+coverage
+*.db
+.env
+

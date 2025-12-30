@@ -1,0 +1,37 @@
+{
+    "name": "contextor-examples",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch hono-server.ts",
+        "server": "tsx hono-server.ts",
+        "test:client": "tsx test-client.ts",
+        "test:context": "tsx test-context-management.ts",
+        "test:context-proof": "tsx test-context-proof.ts",
+        "test:prepare": "tsx test-prepare-step.ts"
+    },
+    "dependencies": {
+        "@ai-sdk/anthropic": "^3.0.2",
+        "@hono/node-server": "^1.19.6",
+        "@mastra/ai-sdk": "^1.0.0-beta.12",
+        "@contextor-ai/core": "^0.1.1",
+        "@mastra/core": "^1.0.0-beta.19",
+        "@mastra/hono": "^0.1.0-beta.14",
+        "@mastra/libsql": "^1.0.0-beta.10",
+        "@mastra/loggers": "^1.0.0-beta.3",
+        "@mastra/memory": "^1.0.0-beta.10",
+        "@mastra/observability": "^1.0.0-beta.9",
+        "@t3-oss/env-core": "^0.13.10",
+        "ai": "^6.0.5",
+        "dotenv": "^17.2.3",
+        "hono": "^4.11.3",
+        "mastra": "^1.0.0-beta.12",
+        "tsx": "^4.7.1",
+        "zod": "^4.2.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.17",
+        "typescript": "^5.8.3"
+    }
+}

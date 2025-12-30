@@ -1,0 +1,65 @@
+{
+    "name": "@contextor-ai/core",
+    "version": "0.1.1",
+    "description": "Production-ready context management orchestrator for long-running AI agents",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./presets": {
+            "types": "./dist/presets.d.ts",
+            "default": "./dist/presets.js"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "BENCHMARKS.md",
+        "TEST_COVERAGE.md"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "test:integration": "bun test integration.test.ts",
+    "test:all": "bun test && bun test integration.test.ts",
+    "benchmark": "tsx benchmarks/run-benchmarks.ts",
+    "lint": "eslint . --ext .ts --max-warnings 10",
+    "lint:fix": "eslint . --ext .ts --fix --max-warnings 10",
+        "format": "prettier --write \"**/*.{ts,json,md}\"",
+        "format:check": "prettier --check \"**/*.{ts,json,md}\"",
+        "typecheck": "tsc --noEmit",
+        "prepublishOnly": "bun run build"
+    },
+    "keywords": [
+        "ai",
+        "agent",
+        "context-management",
+        "context-orchestrator",
+        "llm",
+        "long-running",
+        "token-management",
+        "context-window"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "@mastra/core": "^1.0.0-beta.19",
+        "zod": "^4.2.1"
+    },
+    "peerDependencies": {
+        "@mastra/core": "^1.0.0-beta.19"
+    },
+    "devDependencies": {
+        "@mastra/core": "^1.0.0-beta.19",
+        "@mastra/memory": "^1.0.0-beta.10",
+        "@types/node": "^20.11.17",
+        "tsx": "^4.7.1",
+        "typescript": "^5.8.3"
+    }
+}

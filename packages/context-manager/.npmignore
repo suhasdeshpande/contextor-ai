@@ -1,0 +1,11 @@
+*.test.ts
+example.ts
+benchmarks/
+integration.test.ts
+tsconfig.json
+.eslintrc.json
+node_modules
+coverage
+*.log
+*.tsbuildinfo
+
