@@ -1,4 +1,4 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["*.test.ts", "example.ts", "dist"]
+  "ignorePatterns": ["*.test.ts", "example.ts", "dist", "benchmarks"]
 }
