@@ -18,7 +18,7 @@ function simulateWithoutCM(steps: number) {
     
     let tokens = 1000;
     for (let i = 1; i <= steps; i++) {
-        tokens += Math.floor(Math.random() * 2000) + 1000; // Random growth
+        tokens += 2000 + (i * 500); // Faster growth to show failure clearly
         const status = tokens > 100000 ? '❌ FAILED (limit exceeded)' : 
                       tokens > 80000 ? '⚠️  WARNING (approaching limit)' : 
                       '✅ OK';

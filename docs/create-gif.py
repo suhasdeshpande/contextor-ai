@@ -78,14 +78,20 @@ def main():
 
     frames = []
 
-    # Without CM - tokens grow unbounded
+    # Without CM - tokens grow unbounded and fail
     tokens = 1000
     for step in range(1, 21):
-        tokens += 1500 + (step * 100)  # Growing tokens
-        status = "FAILED" if tokens > 100000 else "WARNING" if tokens > 80000 else "OK"
-        frames.append(create_frame(step, tokens, None, status, False))
+        tokens += 2000 + (step * 500)  # Faster growth to show failure
         if tokens > 100000:
+            status = "FAILED"
+            frames.append(create_frame(step, tokens, None, status, False))
+            # Add failure message frame
             break
+        elif tokens > 80000:
+            status = "WARNING"
+        else:
+            status = "OK"
+        frames.append(create_frame(step, tokens, None, status, False))
 
     # With CM - tokens controlled
     tokens = 1000

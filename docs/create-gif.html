@@ -218,7 +218,7 @@
 
             for (let i = 1; i <= steps; i++) {
                 setTimeout(() => {
-                    tokens += Math.floor(Math.random() * 2000) + 1000;
+                    tokens += 2000 + (i * 500); // Faster growth to show failure
                     const status = tokens > 100000 ?
                         '<span class="status-failed">❌ FAILED (limit exceeded)</span>' :
                         tokens > 80000 ?
@@ -237,12 +237,14 @@
 
                     if (tokens > 100000) {
                         const failRow = document.createElement('tr');
+                        failRow.style.backgroundColor = '#3e1e1e';
                         failRow.innerHTML = `
-                            <td colspan="3" style="color: #f48771; padding-top: 10px;">
-                                💥 Agent failed at step ${i} - token limit exceeded!
+                            <td colspan="3" style="color: #f48771; padding: 15px; font-weight: bold; font-size: 16px;">
+                                💥 Agent FAILED at step ${i} - token limit (100k) exceeded!
                             </td>
                         `;
                         tbody.appendChild(failRow);
+                        return; // Stop adding more rows
                     }
                 }, i * 200);
             }
