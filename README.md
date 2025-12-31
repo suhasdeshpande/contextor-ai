@@ -116,22 +116,22 @@ See [`packages/context-manager/BENCHMARKS.md`](./packages/context-manager/BENCHM
 
 Running a 50-step agent conversation without context management vs. with context management:
 
-| Metric                   | Without Context Manager | With Context Manager | Improvement          |
-| ------------------------ | ----------------------- | -------------------- | -------------------- |
-| Peak Token Count         | 180,000 tokens          | 45,000 tokens        | 75% reduction        |
-| Average Step Latency    | 2.3s                    | 1.1s                 | 52% faster           |
-| Total Cost (GPT-4)      | $12.50                  | $3.20                | 74% cheaper          |
-| Failed Requests         | 8 (token limit)         | 0                    | 100% reliability      |
-| Max Steps Completed     | 23                      | 50+                  | 117% more work        |
+| Metric               | Without Context Manager | With Context Manager | Improvement      |
+| -------------------- | ----------------------- | -------------------- | ---------------- |
+| Peak Token Count     | 180,000 tokens          | 45,000 tokens        | 75% reduction    |
+| Average Step Latency | 2.3s                    | 1.1s                 | 52% faster       |
+| Total Cost (GPT-4)   | $12.50                  | $3.20                | 74% cheaper      |
+| Failed Requests      | 8 (token limit)         | 0                    | 100% reliability |
+| Max Steps Completed  | 23                      | 50+                  | 117% more work   |
 
 ### Strategy Effectiveness
 
-| Strategy          | Token Reduction | Use Case            |
-| ----------------- | --------------- | ------------------- |
-| Filtering         | 20-30%          | Large tool outputs  |
-| Compaction        | 40-60%          | Stale tool results  |
-| Summarization     | 70-85%          | Old message history |
-| Offloading        | 80-95%          | Very old context    |
+| Strategy      | Token Reduction | Use Case            |
+| ------------- | --------------- | ------------------- |
+| Filtering     | 20-30%          | Large tool outputs  |
+| Compaction    | 40-60%          | Stale tool results  |
+| Summarization | 70-85%          | Old message history |
+| Offloading    | 80-95%          | Very old context    |
 
 ### Run Benchmarks
 
