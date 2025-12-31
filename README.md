@@ -15,7 +15,7 @@ Long-running agents (30-50+ steps) face context window limits. As conversations 
 
 _Visualization: Without context management, tokens grow unbounded and the agent fails. With context management, strategies keep tokens controlled and the agent succeeds._
 
-**See it live:** [View interactive animation](https://suhasdeshpande.github.io/-contextor-ai-core/docs/create-gif.html) or open [`docs/create-gif.html`](./docs/create-gif.html) locally.
+**See it live:** [View interactive animation](https://suhasdeshpande.github.io/contextor-ai/docs/create-gif.html) or open [`docs/create-gif.html`](./docs/create-gif.html) locally.
 
 ## Solution
 
