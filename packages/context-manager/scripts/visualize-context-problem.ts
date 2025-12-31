@@ -1,8 +1,8 @@
 /**
  * Visual demonstration of the context management problem
- * 
+ *
  * Run with: bun run packages/context-manager/scripts/visualize-context-problem.ts
- * 
+ *
  * This shows:
  * 1. Without context management: tokens grow unbounded → failure
  * 2. With context management: tokens stay controlled → success
@@ -15,15 +15,15 @@ function simulateWithoutCM(steps: number) {
     console.log('\n❌ WITHOUT Context Management:\n');
     console.log('Step | Tokens  | Status');
     console.log('-----|---------|------------------');
-    
+
     let tokens = 1000;
     for (let i = 1; i <= steps; i++) {
         tokens += 2000 + (i * 500); // Faster growth to show failure clearly
-        const status = tokens > 100000 ? '❌ FAILED (limit exceeded)' : 
-                      tokens > 80000 ? '⚠️  WARNING (approaching limit)' : 
+        const status = tokens > 100000 ? '❌ FAILED (limit exceeded)' :
+                      tokens > 80000 ? '⚠️  WARNING (approaching limit)' :
                       '✅ OK';
         console.log(`${String(i).padStart(4)} | ${String(tokens).padStart(7)} | ${status}`);
-        
+
         if (tokens > 100000) {
             console.log(`\n💥 Agent failed at step ${i} - token limit exceeded!`);
             break;
@@ -36,14 +36,14 @@ function simulateWithCM(steps: number) {
     console.log('\n✅ WITH Context Management:\n');
     console.log('Step | Tokens  | Strategy Applied | Status');
     console.log('-----|---------|------------------|------------------');
-    
+
     let tokens = 1000;
     for (let i = 1; i <= steps; i++) {
         tokens += Math.floor(Math.random() * 2000) + 1000; // Random growth
-        
+
         let strategy = '';
         let reduction = 0;
-        
+
         // Apply strategies based on thresholds
         if (tokens > 60000 && i >= 5) {
             // Offload
@@ -66,14 +66,14 @@ function simulateWithCM(steps: number) {
             tokens = reduction;
             strategy = '🔍 FILTER';
         }
-        
-        const status = tokens > 100000 ? '❌ FAILED' : 
-                      tokens > 80000 ? '⚠️  WARNING' : 
+
+        const status = tokens > 100000 ? '❌ FAILED' :
+                      tokens > 80000 ? '⚠️  WARNING' :
                       '✅ OK';
         const strategyDisplay = strategy || '-';
         console.log(`${String(i).padStart(4)} | ${String(tokens).padStart(7)} | ${strategyDisplay.padEnd(17)} | ${status}`);
     }
-    
+
     console.log(`\n🎉 Agent completed all ${steps} steps successfully!`);
 }
 
@@ -82,17 +82,17 @@ async function main() {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('  Context Management Problem Visualization');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    
+
     const steps = 20;
-    
+
     // Show problem
     simulateWithoutCM(steps);
-    
+
     await new Promise(resolve => setTimeout(resolve, DELAY * 2));
-    
+
     // Show solution
     simulateWithCM(steps);
-    
+
     console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     console.log('\n📊 Key Differences:');
     console.log('  ❌ Without CM: Tokens grow unbounded → failure at step ~15-20');
